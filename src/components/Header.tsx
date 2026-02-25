@@ -31,6 +31,9 @@ export default async function Header() {
                     <Link href="/guide" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         {dict.nav.manual}
                     </Link>
+                    <Link href="/advanced" className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1">
+                        {dict.nav.techDive}
+                    </Link>
                     <Link href="/request" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         {dict.nav.request}
                     </Link>

@@ -9,8 +9,10 @@ export const dictionaries = {
             searchButton: '検索'
         },
         nav: {
+            home: 'ホーム',
             projects: 'プロジェクト一覧',
             manual: '初心者マニュアル',
+            techDive: 'Tech Deep Dive',
             request: 'リサーチリクエスト',
             pricing: '料金表',
             connect: 'ウォレット接続'
@@ -106,6 +108,41 @@ export const dictionaries = {
                     explanation: 'シードフレーズが漏れるとウォレットの中身がすべて盗まれます。デジタルデータとして保存すること自体がハッキングのリスクを伴うため、物理的なメモ（紙や鉄板）が基本です。'
                 }
             ]
+        },
+        advanced: {
+            title: 'Tech Deep Dive',
+            subtitle: '開発者・中上級者向け Web3 アーキテクチャ解説',
+            topics: [
+                {
+                    id: 'smart-contracts',
+                    title: 'Smart Contracts (スマートコントラクト)',
+                    content: 'スマートコントラクトは、ブロックチェーン上で自動的に実行されるプログラムです。EthereumのEVM（Ethereum Virtual Machine）などで動作し、SolidityやVyperといった言語で記述されます。コードが法律（Code is Law）として機能し、仲介者なしでトラストレスな取引やDeFiプロトコルを実現します。一度デプロイされるとイミュータブル（変更不可）となるため、厳密なセキュリティ監査が不可欠です。',
+                    codeSnippet: `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 storedData;
+
+    function set(uint256 x) public {
+        storedData = x;
+    }
+
+    function get() public view returns (uint256) {
+        return storedData;
+    }
+}`
+                },
+                {
+                    id: 'consensus',
+                    title: 'Consensus Algorithms (Proof of Work vs Proof of Stake)',
+                    content: 'コンセンサスアルゴリズムは、分散型ネットワークで単一の真実状態（State）に合意するための仕組みです。\n**Proof of Work (PoW):** Bitcoinが採用。マイナーが莫大な計算力（ハッシュパワー）を提供してブロックを生成し、ビザンチン将軍問題を解決します。極めてセキュアですが、エネルギー消費が課題です。\n**Proof of Stake (PoS):** Ethereum 2.0などが採用。計算力ではなく、ネットワークにステーク（ロック）した資産額に応じてバリデーターが選出されます。エネルギー効率が高く、ファイナリティへのアプローチが異なります。'
+                },
+                {
+                    id: 'layer2',
+                    title: 'Layer 2 Scaling (Rollups)',
+                    content: 'Layer 1（Ethereumなど）のスケーラビリティ問題（ガス代の高騰、トランザクションの遅延）を解決するための技術です。\n**Optimistic Rollups (Arbitrum, Optimism):** トランザクションが不正でないという「楽観的」な前提で処理し、後から異議申し立て（Fraud Proof）の期間を設けます。\n**ZK-Rollups (StarkNet, zkSync):** ゼロ知識証明を用いて、オフチェーンで計算した結果の正当性を暗号学的に証明（Validity Proof）し、L1に提出します。より高いスケーラビリティと即時のファイナリティを持ちます。'
+                }
+            ]
         }
     },
     en: {
@@ -116,8 +153,10 @@ export const dictionaries = {
             searchButton: 'Search'
         },
         nav: {
+            home: 'Home',
             projects: 'Projects',
             manual: 'Beginner Guide',
+            techDive: 'Tech Deep Dive',
             request: 'Research Request',
             pricing: 'Pricing',
             connect: 'Connect Wallet'
@@ -213,6 +252,41 @@ export const dictionaries = {
                     explanation: 'If a seed phrase is leaked, everything in the wallet can be stolen. Storing it as digital data itself carries hacking risks, so physical notes (paper or metal) are standard practice.'
                 }
             ]
+        },
+        advanced: {
+            title: 'Tech Deep Dive',
+            subtitle: 'Web3 Architecture Guide for Developers & Advanced Users',
+            topics: [
+                {
+                    id: 'smart-contracts',
+                    title: 'Smart Contracts',
+                    content: 'Smart contracts are programs stored on a blockchain that run when predetermined conditions are met. They typically run on environments like the EVM (Ethereum Virtual Machine) and are written in languages like Solidity or Vyper. They enable trustless transactions and DeFi protocols without intermediaries (Code is Law). Because they are immutable once deployed, rigorous security audits are essential.',
+                    codeSnippet: `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 storedData;
+
+    function set(uint256 x) public {
+        storedData = x;
+    }
+
+    function get() public view returns (uint256) {
+        return storedData;
+    }
+}`
+                },
+                {
+                    id: 'consensus',
+                    title: 'Consensus Algorithms (PoW vs PoS)',
+                    content: 'Consensus algorithms are mechanisms used to achieve agreement on a single data value among distributed processes or systems.\n**Proof of Work (PoW):** Used by Bitcoin. Miners provide massive computational power to generate blocks, solving the Byzantine Generals Problem. Extremely secure but highly energy-intensive.\n**Proof of Stake (PoS):** Used by Ethereum 2.0. Validators are chosen to create blocks based on the amount of cryptocurrency they "stake" (lock up) in the network. It offers high energy efficiency and different approaches to finality.'
+                },
+                {
+                    id: 'layer2',
+                    title: 'Layer 2 Scaling (Rollups)',
+                    content: 'Technology designed to solve the scalability trilemma of Layer 1 blockchains (like high gas fees and slow transactions).\n**Optimistic Rollups (Arbitrum, Optimism):** Assume transactions are valid by default and only run computation via a fraud proof in the event of a challenge.\n**ZK-Rollups (StarkNet, zkSync):** Run computation off-chain and submit a validity proof (using Zero-Knowledge Proofs) to the chain. They offer higher scalability and immediate finality.'
+                }
+            ]
         }
     },
     zh: {
@@ -223,8 +297,10 @@ export const dictionaries = {
             searchButton: '搜索'
         },
         nav: {
+            home: '首页',
             projects: '项目列表',
             manual: '新手指南',
+            techDive: '技术深度解析',
             request: '研究请求',
             pricing: '价格',
             connect: '连接钱包'
@@ -318,6 +394,41 @@ export const dictionaries = {
                     ],
                     correctIndex: 2,
                     explanation: '如果助记词泄露，钱包里的所有内容都会被盗。将其作为数字数据保存本身就伴随着被黑客攻击的风险，因此物理记录（纸张或金属板）是基本要求。'
+                }
+            ]
+        },
+        advanced: {
+            title: '技术深度解析 (Tech Deep Dive)',
+            subtitle: '面向开发者与中高级用户的 Web3 架构指南',
+            topics: [
+                {
+                    id: 'smart-contracts',
+                    title: '智能合约 (Smart Contracts)',
+                    content: '智能合约是存储在区块链上的程序，当满足预定条件时就会运行。它们通常在 EVM（以太坊虚拟机）等环境中运行，并使用 Solidity 或 Vyper 等语言编写。它们实现了无需预先信任的交易和无中介的 DeFi 协议（代码即法律）。由于部署后不可篡改，因此严格的安全审计至关重要。',
+                    codeSnippet: `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 storedData;
+
+    function set(uint256 x) public {
+        storedData = x;
+    }
+
+    function get() public view returns (uint256) {
+        return storedData;
+    }
+}`
+                },
+                {
+                    id: 'consensus',
+                    title: '共识算法 (PoW vs PoS)',
+                    content: '共识算法是用于在分布式进程或系统之间对单个数据值达成一致机制。\n**工作量证明 (PoW):** 被比特币使用。矿工提供大规模计算能力来生成区块，解决拜占庭将军问题。极其安全但极其耗电。\n**权益证明 (PoS):** 被以太坊 2.0 使用。根据验证者在网络中“质押”（锁定）的加密货币数量选择验证者来创建区块。它提供了高能源效率和不同的最终性方法。'
+                },
+                {
+                    id: 'layer2',
+                    title: 'Layer 2 扩容 (Rollups)',
+                    content: '旨在解决Layer 1区块链可扩展性困境（如高昂的 Gas 费和缓慢的交易）的技术。\n**Optimistic Rollups (Arbitrum, Optimism):** 默认假设交易有效，仅在遇到挑战时才通过欺诈证明运行计算。\n**ZK-Rollups (StarkNet, zkSync):** 在链下运行计算，并向链上提交有效性证明（使用零知识证明）。它们提供更高的可扩展性和即时的最终性。'
                 }
             ]
         }
