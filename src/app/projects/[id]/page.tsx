@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import { getProjectDetails, FEATURED_COINS } from '@/services/api';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Clock, TrendingUp, TrendingDown, Target } from 'lucide-react';
+import { ArrowLeft, Clock, TrendingUp, TrendingDown, Target, Globe, MessageCircle, Send, Code, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
@@ -41,10 +41,12 @@ export default async function ProjectDetail({ params }: Props) {
     }).format(project.market_data.current_price.jpy);
 
     // Use localized description if available, fallback to English
-    const rawDescription = (project.description as any)[locale] || project.description.ja || project.description.en || "説明文がありません。";
+    const rawDescription = (project.description as any)[locale] || project.description.ja || project.description.en || "";
 
-    // CoinGecko returns descriptions with HTML link tags sometimes, let's strip them simply for safety
-    const cleanDescription = rawDescription.replace(/<[^>]*>?/gm, '');
+    // Convert line breaks to <br /> for proper HTML rendering, keeping existing tags
+    const htmlDescription = rawDescription
+        ? rawDescription.replace(/\r\n|\n/g, '<br />')
+        : null;
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
@@ -95,6 +97,40 @@ export default async function ProjectDetail({ params }: Props) {
                                     <Target size={14} />
                                     {dict.common.rank}: #{project.market_cap_rank}
                                 </span>
+                                {project.genesis_date && (
+                                    <span className="bg-white/5 text-gray-300 px-3 py-1 rounded-full text-sm font-semibold border border-white/10 flex items-center gap-1">
+                                        <Calendar size={14} />
+                                        Genesis: {project.genesis_date}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Official Links */}
+                            <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
+                                {project.links?.homepage?.[0] && project.links.homepage[0] !== "" && (
+                                    <a href={project.links.homepage[0]} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs md:text-sm text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/5 transition-colors">
+                                        <Globe size={16} />
+                                        Website
+                                    </a>
+                                )}
+                                {project.links?.twitter_screen_name && (
+                                    <a href={`https://twitter.com/${project.links.twitter_screen_name}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs md:text-sm text-gray-400 hover:text-[#1DA1F2] bg-white/5 hover:bg-[#1DA1F2]/10 px-3 py-1.5 rounded-lg border border-white/5 transition-colors">
+                                        <MessageCircle size={16} />
+                                        X (Twitter)
+                                    </a>
+                                )}
+                                {project.links?.telegram_channel_identifier && (
+                                    <a href={`https://t.me/${project.links.telegram_channel_identifier}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs md:text-sm text-gray-400 hover:text-[#0088cc] bg-white/5 hover:bg-[#0088cc]/10 px-3 py-1.5 rounded-lg border border-white/5 transition-colors">
+                                        <Send size={16} />
+                                        Telegram
+                                    </a>
+                                )}
+                                {project.links?.repos_url?.github?.[0] && (
+                                    <a href={project.links.repos_url.github[0]} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs md:text-sm text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/5 transition-colors">
+                                        <Code size={16} />
+                                        GitHub
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -104,16 +140,16 @@ export default async function ProjectDetail({ params }: Props) {
                         <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 flex items-center gap-2">
                             {dict.common.descriptionTitle}
                         </h2>
-                        <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
-                            {cleanDescription ? (
-                                cleanDescription.split('\r\n').map((paragraph: string, idx: number) => {
-                                    if (!paragraph.trim()) return null;
-                                    return <p key={idx}>{paragraph}</p>;
-                                })
-                            ) : (
+                        {htmlDescription ? (
+                            <div
+                                className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4 prose-a:text-indigo-400 hover:prose-a:text-indigo-300 prose-a:underline"
+                                dangerouslySetInnerHTML={{ __html: htmlDescription }}
+                            />
+                        ) : (
+                            <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed">
                                 <p className="text-gray-500 italic">概要情報が提供されていません。</p>
-                            )}
-                        </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </main>

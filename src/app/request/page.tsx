@@ -4,6 +4,7 @@ import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
 import { MessageSquarePlus } from 'lucide-react';
 import Link from 'next/link';
+import ContactForm from '@/components/ContactForm';
 
 export default async function RequestPage() {
     const locale = await getLocale();
@@ -19,12 +20,10 @@ export default async function RequestPage() {
                     <div className="inline-block p-4 bg-purple-500/20 rounded-2xl mb-6">
                         <MessageSquarePlus size={48} className="text-purple-400" />
                     </div>
-                    <h1 className="text-4xl font-bold mb-4">{dict.nav.request}</h1>
-                    <p className="text-xl text-gray-400 mb-8">{dict.common.comingSoon}</p>
-
-                    <Link href="/" className="inline-block bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors">
-                        {dict.common.backToList}
-                    </Link>
+                    <h1 className="text-4xl text-white font-bold mb-4">{dict.nav.request}</h1>
+                    <div className="mt-10 relative z-10 w-full animate-fade-in-up">
+                        <ContactForm dict={dict.contact} />
+                    </div>
                 </div>
             </main>
 

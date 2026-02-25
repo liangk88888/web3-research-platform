@@ -43,6 +43,21 @@ export const dictionaries = {
             phantom: 'Phantom',
             connecting: '接続中...',
             cancel: 'キャンセル'
+        },
+        contact: {
+            nameLabel: 'お名前',
+            namePlaceholder: '山田 太郎',
+            emailLabel: 'メールアドレス',
+            emailPlaceholder: 'yamada@example.com',
+            projectLabel: '調査希望プロジェクト名（任意）',
+            projectPlaceholder: '例: Ethereum, Solana...',
+            messageLabel: 'リクエスト内容',
+            messagePlaceholder: '「このブロックチェーンの技術的優位性を知りたい」など...',
+            submitButton: 'リクエストを送信する',
+            submitting: '送信中...',
+            successTitle: '送信完了',
+            successMessage: 'リクエストを承りました。調査完了までしばらくお待ちください！',
+            errorRequired: '必須項目をすべて入力してください。'
         }
     },
     en: {
@@ -87,6 +102,21 @@ export const dictionaries = {
             phantom: 'Phantom',
             connecting: 'Connecting...',
             cancel: 'Cancel'
+        },
+        contact: {
+            nameLabel: 'Your Name',
+            namePlaceholder: 'John Doe',
+            emailLabel: 'Email Address',
+            emailPlaceholder: 'john@example.com',
+            projectLabel: 'Target Project (Optional)',
+            projectPlaceholder: 'e.g., Ethereum, Solana...',
+            messageLabel: 'Request Details',
+            messagePlaceholder: 'I want to know the technical advantages of this blockchain...',
+            submitButton: 'Send Request',
+            submitting: 'Sending...',
+            successTitle: 'Request Sent',
+            successMessage: 'We have received your research request. Please wait for our analysis!',
+            errorRequired: 'Please fill in all required fields.'
         }
     },
     zh: {
@@ -131,6 +161,21 @@ export const dictionaries = {
             phantom: 'Phantom',
             connecting: '连接中...',
             cancel: '取消'
+        },
+        contact: {
+            nameLabel: '您的姓名',
+            namePlaceholder: '张三',
+            emailLabel: '电子邮件',
+            emailPlaceholder: 'zhangsan@example.com',
+            projectLabel: '调研项目名称（选填）',
+            projectPlaceholder: '例如：Ethereum, Solana...',
+            messageLabel: '请求详细内容',
+            messagePlaceholder: '我想了解这个区块链的技术优势...',
+            submitButton: '发送请求',
+            submitting: '发送中...',
+            successTitle: '请求已发送',
+            successMessage: '我们已收到您的调研请求，请耐心等待我们的分析报告！',
+            errorRequired: '请输入所有必填项。'
         }
     }
 };

@@ -54,6 +54,17 @@ export interface CoinGeckoCoinDetails {
         market_cap: { jpy: number; usd: number };
     };
     categories: string[];
+    genesis_date?: string;
+    links?: {
+        homepage?: string[];
+        whitepaper?: string;
+        twitter_screen_name?: string;
+        telegram_channel_identifier?: string;
+        subreddit_url?: string;
+        repos_url?: {
+            github?: string[];
+        };
+    };
 }
 
 export const CATEGORY_MAP: Record<string, string> = {
