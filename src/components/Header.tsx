@@ -1,8 +1,10 @@
 import React from 'react';
-import { Wallet } from 'lucide-react';
+import { Globe, Wallet } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
+import Link from 'next/link';
+import ConnectWalletButton from './ConnectWalletButton';
 
 export default async function Header() {
     const locale = await getLocale();
@@ -23,27 +25,24 @@ export default async function Header() {
 
                 {/* Navigation - Hidden on Mobile */}
                 <nav className="hidden md:flex items-center gap-8">
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link href="/" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         {dict.nav.projects}
-                    </a>
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    </Link>
+                    <Link href="/guide" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         {dict.nav.manual}
-                    </a>
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    </Link>
+                    <Link href="/request" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         {dict.nav.request}
-                    </a>
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    </Link>
+                    <Link href="/pricing" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         {dict.nav.pricing}
-                    </a>
+                    </Link>
                 </nav>
 
                 {/* Actions */}
                 <div className="flex items-center gap-4">
                     <LanguageSwitcher initialLocale={locale} />
-                    <button className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 cursor-pointer">
-                        <Wallet size={16} />
-                        <span className="hidden sm:inline">{dict.nav.connect}</span>
-                    </button>
+                    <ConnectWalletButton dict={dict.wallet} buttonText={dict.nav.connect} />
                 </div>
             </div>
         </header>

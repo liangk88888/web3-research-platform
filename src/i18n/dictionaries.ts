@@ -31,7 +31,18 @@ export const dictionaries = {
             footerRights: '無断転載を禁じます。',
             footerData: 'データ提供: CoinGecko API & RSS Feeds',
             descriptionTitle: 'プロジェクト概要',
-            marketDataTitle: 'マーケットデータ'
+            marketDataTitle: 'マーケットデータ',
+            comingSoon: '鋭意開発中・近日公開予定'
+        },
+        wallet: {
+            title: 'ウォレットを接続',
+            subtitle: '対応するウォレットを選択してください',
+            metamask: 'MetaMask',
+            walletConnect: 'WalletConnect',
+            coinbase: 'Coinbase Wallet',
+            phantom: 'Phantom',
+            connecting: '接続中...',
+            cancel: 'キャンセル'
         }
     },
     en: {
@@ -64,7 +75,18 @@ export const dictionaries = {
             footerRights: 'All rights reserved.',
             footerData: 'Data provided by CoinGecko API & RSS Feeds',
             descriptionTitle: 'Project Overview',
-            marketDataTitle: 'Market Data'
+            marketDataTitle: 'Market Data',
+            comingSoon: 'Under Construction & Coming Soon'
+        },
+        wallet: {
+            title: 'Connect Wallet',
+            subtitle: 'Select your preferred wallet',
+            metamask: 'MetaMask',
+            walletConnect: 'WalletConnect',
+            coinbase: 'Coinbase Wallet',
+            phantom: 'Phantom',
+            connecting: 'Connecting...',
+            cancel: 'Cancel'
         }
     },
     zh: {
@@ -97,7 +119,18 @@ export const dictionaries = {
             footerRights: '版权所有。',
             footerData: '数据提供: CoinGecko API & RSS Feeds',
             descriptionTitle: '项目概述',
-            marketDataTitle: '市场数据'
+            marketDataTitle: '市场数据',
+            comingSoon: '正在开发中 · 敬请期待'
+        },
+        wallet: {
+            title: '连接钱包',
+            subtitle: '请选择您支持的钱包',
+            metamask: 'MetaMask',
+            walletConnect: 'WalletConnect',
+            coinbase: 'Coinbase Wallet',
+            phantom: 'Phantom',
+            connecting: '连接中...',
+            cancel: '取消'
         }
     }
 };

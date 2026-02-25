@@ -1,7 +1,7 @@
 import React from 'react';
-import { Search } from 'lucide-react';
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
+import HeroSearch from './HeroSearch';
 
 export default async function Hero() {
     const locale = await getLocale();
@@ -26,24 +26,10 @@ export default async function Hero() {
                     {dict.hero.subtitle}
                 </p>
 
-                {/* Search Bar Placeholder */}
-                <div className="relative max-w-2xl mx-auto group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
-                    <div className="relative flex items-center bg-zinc-900/80 border border-zinc-800 rounded-full p-2 backdrop-blur-sm">
-                        <div className="pl-4 pr-3 text-gray-400">
-                            <Search size={20} />
-                        </div>
-                        <input
-                            type="text"
-                            placeholder={dict.hero.searchPlaceholder}
-                            className="flex-1 bg-transparent border-none outline-none text-white placeholder:text-gray-600 focus:ring-0 text-base"
-                            disabled
-                        />
-                        <button className="bg-white text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors ml-2 cursor-pointer">
-                            {dict.hero.searchButton}
-                        </button>
-                    </div>
-                </div>
+                <HeroSearch
+                    placeholder={dict.hero.searchPlaceholder}
+                    buttonText={dict.hero.searchButton}
+                />
             </div>
         </section>
     );
