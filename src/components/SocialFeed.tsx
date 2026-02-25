@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 
-export default function SocialFeed() {
+export default function SocialFeed({ title }: { title: string }) {
     useEffect(() => {
         // Dynamically inject Twitter script for embedding
         const script = document.createElement("script");
@@ -17,7 +17,7 @@ export default function SocialFeed() {
                 <div className="p-2 bg-blue-500/20 rounded-xl">
                     <MessageCircle className="text-blue-400" size={24} />
                 </div>
-                <h2 className="text-2xl font-bold text-white">センチメント (X)</h2>
+                <h2 className="text-2xl font-bold text-white">{title}</h2>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden min-h-[500px] h-[calc(100%-80px)] overflow-y-auto no-scrollbar relative">

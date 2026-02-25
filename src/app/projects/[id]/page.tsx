@@ -4,6 +4,8 @@ import { getProjectDetails, FEATURED_COINS } from '@/services/api';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, TrendingUp, TrendingDown, Target } from 'lucide-react';
 import Link from 'next/link';
+import { getLocale } from '@/i18n/getLocale';
+import { getDictionary } from '@/i18n/dictionaries';
 
 interface Props {
     params: Promise<{ id: string }>;
@@ -18,6 +20,8 @@ export async function generateStaticParams() {
 
 export default async function ProjectDetail({ params }: Props) {
     const { id } = await params;
+    const locale = await getLocale();
+    const dict = getDictionary(locale);
 
     let project;
     try {
@@ -36,8 +40,8 @@ export default async function ProjectDetail({ params }: Props) {
         maximumFractionDigits: 2
     }).format(project.market_data.current_price.jpy);
 
-    // Use Japanese description if available, fallback to English
-    const rawDescription = project.description.ja || project.description.en || "説明文がありません。";
+    // Use localized description if available, fallback to English
+    const rawDescription = (project.description as any)[locale] || project.description.ja || project.description.en || "説明文がありません。";
 
     // CoinGecko returns descriptions with HTML link tags sometimes, let's strip them simply for safety
     const cleanDescription = rawDescription.replace(/<[^>]*>?/gm, '');
@@ -51,7 +55,7 @@ export default async function ProjectDetail({ params }: Props) {
                     {/* Back Button */}
                     <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group">
                         <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-                        <span>ホームへ戻る</span>
+                        <span>{dict.common.backToList}</span>
                     </Link>
 
                     {/* Details Header Card */}
@@ -75,7 +79,7 @@ export default async function ProjectDetail({ params }: Props) {
                                 </div>
 
                                 <div className="text-right flex flex-col items-center md:items-end bg-black/40 p-3 rounded-xl border border-white/5">
-                                    <span className="text-xs text-gray-500 font-bold mb-1">現在の価格 (JPY)</span>
+                                    <span className="text-xs text-gray-500 font-bold mb-1">{dict.common.currentPrice} (JPY)</span>
                                     <div className="flex items-center gap-3">
                                         <span className="text-2xl font-bold text-white">{formattedPrice}</span>
                                         <span className={`flex items-center gap-1 text-sm font-bold bg-white/5 px-2 py-1 rounded-md ${priceColor}`}>
@@ -89,7 +93,7 @@ export default async function ProjectDetail({ params }: Props) {
                             <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-6">
                                 <span className="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-sm font-semibold border border-indigo-500/30 flex items-center gap-1">
                                     <Target size={14} />
-                                    時価総額ランク: #{project.market_cap_rank}
+                                    {dict.common.rank}: #{project.market_cap_rank}
                                 </span>
                             </div>
                         </div>
@@ -98,11 +102,11 @@ export default async function ProjectDetail({ params }: Props) {
                     {/* Project Description */}
                     <div className="bg-zinc-900/50 backdrop-blur-xl border border-white/5 rounded-3xl p-8 md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
                         <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 flex items-center gap-2">
-                            プロジェクト概要
+                            {dict.common.descriptionTitle}
                         </h2>
                         <div className="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
                             {cleanDescription ? (
-                                cleanDescription.split('\r\n').map((paragraph, idx) => {
+                                cleanDescription.split('\r\n').map((paragraph: string, idx: number) => {
                                     if (!paragraph.trim()) return null;
                                     return <p key={idx}>{paragraph}</p>;
                                 })
@@ -115,8 +119,8 @@ export default async function ProjectDetail({ params }: Props) {
             </main>
 
             <footer className="border-t border-white/10 py-12 text-center text-gray-500 mt-auto">
-                <p className="text-sm">© 2024 Web3Research. All rights reserved.</p>
-                <p className="text-xs mt-2 opacity-50">Data provided by CoinGecko API</p>
+                <p className="text-sm">© 2024 Web3Research. {dict.common.footerRights}</p>
+                <p className="text-xs mt-2 opacity-50">{dict.common.footerData}</p>
             </footer>
         </div>
     );

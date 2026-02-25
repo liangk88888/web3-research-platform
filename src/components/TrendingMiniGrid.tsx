@@ -2,7 +2,7 @@ import React from 'react';
 import { TrendingCoin } from '@/services/api';
 import { Flame } from 'lucide-react';
 
-export default function TrendingMiniGrid({ coins }: { coins: TrendingCoin[] }) {
+export default function TrendingMiniGrid({ coins, title }: { coins: TrendingCoin[], title: string }) {
     if (!coins || coins.length === 0) return null;
 
     return (
@@ -11,7 +11,7 @@ export default function TrendingMiniGrid({ coins }: { coins: TrendingCoin[] }) {
                 <div className="p-2 bg-orange-500/20 rounded-xl flex items-center justify-center">
                     <Flame className="text-orange-500" size={24} />
                 </div>
-                <h2 className="text-2xl font-bold text-white">24h 検索急上昇 (Trending)</h2>
+                <h2 className="text-2xl font-bold text-white">{title}</h2>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

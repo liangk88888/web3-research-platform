@@ -4,9 +4,10 @@ import ProjectCard from './ProjectCard';
 
 interface Props {
     projects: CoinGeckoMarketData[];
+    dict: any;
 }
 
-export default function ProjectGrid({ projects }: Props) {
+export default function ProjectGrid({ projects, dict }: Props) {
     if (projects.length === 0) {
         return (
             <div className="w-full py-20 text-center flex flex-col items-center justify-center">
@@ -21,7 +22,7 @@ export default function ProjectGrid({ projects }: Props) {
                 {projects.map(project => (
                     <div key={project.id} className="animate-fade-in-up" style={{ animationFillMode: 'both' }}>
                         {/* For real filtering, we might need more complex category logic, but for now we pass a placeholder or remove it entirely from card if fetching generalized trending */}
-                        <ProjectCard project={project} />
+                        <ProjectCard project={project} dict={dict.common} />
                     </div>
                 ))}
             </div>

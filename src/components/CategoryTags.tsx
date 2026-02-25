@@ -1,21 +1,21 @@
 import React from 'react';
 // We'll hardcode categories that make sense for our featured API coins
-export const API_CATEGORIES = [
-    "すべて",
-    "Layer1",
-    "Layer2",
-    "DeFi",
-    "インフラ",
-    "Telegram App",
-    "Meme"
-];
-
 interface Props {
     selectedCategory: string;
     onSelectCategory: (category: string) => void;
+    allText: string;
 }
 
-export default function CategoryTags({ selectedCategory, onSelectCategory }: Props) {
+export default function CategoryTags({ selectedCategory, onSelectCategory, allText }: Props) {
+    const API_CATEGORIES = [
+        allText,
+        "Layer1",
+        "Layer2",
+        "DeFi",
+        "インフラ",
+        "Telegram App",
+        "Meme"
+    ];
     return (
         <div className="w-full overflow-x-auto py-4 no-scrollbar">
             <div className="flex items-center gap-3 px-4 min-w-max mx-auto justify-center">

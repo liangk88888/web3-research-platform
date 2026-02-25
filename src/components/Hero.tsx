@@ -1,22 +1,29 @@
 import React from 'react';
 import { Search } from 'lucide-react';
+import { getLocale } from '@/i18n/getLocale';
+import { getDictionary } from '@/i18n/dictionaries';
 
-export default function Hero() {
+export default async function Hero() {
+    const locale = await getLocale();
+    const dict = getDictionary(locale);
+
     return (
         <section className="relative pt-32 pb-20 px-4 overflow-hidden">
             {/* Background Effects */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
             <div className="container mx-auto max-w-4xl text-center">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 animate-fade-in-up">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 animate-fade-in-up whitespace-pre-wrap">
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-                        プロレベルのWeb3リサーチを、
+                        {dict.hero.title.split('\n')[0]}
                     </span>
-                    <span className="block mt-2 text-white">あなたの手に</span>
+                    {dict.hero.title.split('\n')[1] && (
+                        <span className="block mt-2 text-white">{dict.hero.title.split('\n')[1]}</span>
+                    )}
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    最新のDeFi、GameFi、レイヤー1/2プロジェクトを網羅。データドリブンな分析と独自の視点で、次世代のイノベーションを発見しよう。
+                    {dict.hero.subtitle}
                 </p>
 
                 {/* Search Bar Placeholder */}
@@ -28,12 +35,12 @@ export default function Hero() {
                         </div>
                         <input
                             type="text"
-                            placeholder="プロジェクト名、カテゴリ、キーワードで検索..."
+                            placeholder={dict.hero.searchPlaceholder}
                             className="flex-1 bg-transparent border-none outline-none text-white placeholder:text-gray-600 focus:ring-0 text-base"
                             disabled
                         />
                         <button className="bg-white text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors ml-2 cursor-pointer">
-                            検索
+                            {dict.hero.searchButton}
                         </button>
                     </div>
                 </div>

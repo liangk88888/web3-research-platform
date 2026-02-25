@@ -10,16 +10,17 @@ import { CoinGeckoMarketData } from '../services/api';
 // In a full app with database, we'd map these properly. Here we just show how state wraps the grid.
 interface Props {
     initialProjects: CoinGeckoMarketData[];
+    dict: any;
 }
 
-export default function ClientProjectsWrapper({ initialProjects }: Props) {
-    const [selectedCategory, setSelectedCategory] = useState<string>('すべて');
+export default function ClientProjectsWrapper({ initialProjects, dict }: Props) {
+    const [selectedCategory, setSelectedCategory] = useState<string>(dict.common.all);
 
     // Simple pseudo-filter just for visual demonstration of state:
-    // Since `/coins/markets` doesn't return categories, if it's not "すべて", 
+    // Since `/coins/markets` doesn't return categories, if it's not "all", 
     // we just show a subset or nothing to prove it works dynamically. 
     // (In reality, we'd cross-reference a local map or DB)
-    const filteredProjects = selectedCategory === 'すべて'
+    const filteredProjects = selectedCategory === dict.common.all
         ? initialProjects
         : initialProjects.filter(p => {
             // Hardcoded dummy category matching just so the filter UI does *something*
@@ -36,15 +37,16 @@ export default function ClientProjectsWrapper({ initialProjects }: Props) {
         <>
             <div className="flex flex-col items-center mb-8">
                 <h2 className="text-2xl font-bold mb-6 select-none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
-                    トレンドプロジェクト
+                    {dict.sections.trendingProjects}
                 </h2>
                 <CategoryTags
                     selectedCategory={selectedCategory}
                     onSelectCategory={setSelectedCategory}
+                    allText={dict.common.all}
                 />
             </div>
 
-            <ProjectGrid projects={filteredProjects} />
+            <ProjectGrid projects={filteredProjects} dict={dict} />
         </>
     );
 }
