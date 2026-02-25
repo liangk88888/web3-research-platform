@@ -54,6 +54,17 @@ export interface CoinGeckoCoinDetails {
         market_cap: { jpy: number; usd: number };
     };
     categories: string[];
+    genesis_date?: string;
+    links?: {
+        homepage?: string[];
+        whitepaper?: string;
+        twitter_screen_name?: string;
+        telegram_channel_identifier?: string;
+        subreddit_url?: string;
+        repos_url?: {
+            github?: string[];
+        };
+    };
 }
 
 export const CATEGORY_MAP: Record<string, string> = {
@@ -86,10 +97,9 @@ export const FEATURED_COINS = [
  * Fetch market data for our featured coins
  */
 export async function getTrendingProjects(): Promise<CoinGeckoMarketData[]> {
-    const ids = FEATURED_COINS.join('%2C');
     // Revalidate every 1 hour (3600 seconds) for ISR
     const res = await fetch(
-        `${API_BASE_URL}/coins/markets?vs_currency=jpy&ids=${ids}&order=market_cap_desc&sparkline=false&locale=ja`,
+        `${API_BASE_URL}/coins/markets?vs_currency=jpy&order=market_cap_desc&per_page=50&page=1&sparkline=false&locale=ja`,
         { next: { revalidate: 3600 } }
     );
 
@@ -133,22 +143,30 @@ export async function getTrendingSearch(): Promise<TrendingCoin[]> {
         return [];
     }
 }
-
 /**
- * Fetch latest crypto news using RSS Feed (CoinTelegraph EN as example)
- */
-export async function getNewsFeed(): Promise<NewsItem[]> {
+
+ * Search coins via CoinGecko Search API
+    */
+export async function searchCoins(query: string) {
+    if (!query) return [];
     try {
-        const parser = new Parser();
-        const feed = await parser.parseURL('https://cointelegraph.com/rss');
-        return feed.items.slice(0, 4).map(item => ({
-            title: item.title || '',
-            link: item.link || '',
-            pubDate: item.pubDate || '',
-            contentSnippet: item.contentSnippet || ''
+        const res = await fetch(`${API_BASE_URL}/search?query=${encodeURIComponent(query)}`);
+        if (!res.ok) throw new Error('Search API fell');
+        const data = await res.json();
+        // Return top 20 results and format them to match TrendingCoin structure broadly
+        return data.coins.slice(0, 20).map((coin: any) => ({
+            item: {
+                id: coin.id,
+                name: coin.name,
+                symbol: coin.symbol,
+                market_cap_rank: coin.market_cap_rank,
+                thumb: coin.thumb,
+                small: coin.thumb, // Use thumb as small fallback
+                large: coin.large
+            }
         }));
     } catch (error) {
-        console.error("Failed to fetch news feed:", error);
+        console.error("Search API failed", error);
         return [];
     }
 }

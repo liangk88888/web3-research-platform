@@ -1,0 +1,51 @@
+{
+  "ja": [
+    {
+      "id": "mock-news-1",
+      "title": "ビットコイン価格が3%上昇し、市場の注目を集めています",
+      "description": "過去半年間、ビットコインは金や株式の伸びに追随できず、出遅れていましたが、BTC価格が65,000ドルに戻ることで、その遅延したラリーがついに始まるかもしれません。",
+      "url": "https://cointelegraph.com/news/bitcoin-price-climbs-3-percent-gold-divergence-significant-upside",
+      "date": "2026-02-25T10:35:48.000Z"
+    },
+    {
+      "id": "mock-news-2",
+      "title": "Ethereumが次のメジャーアップデート「Pectra」に向けて大規模テストネットを稼働",
+      "description": "イーサリアムの開発者チームは、2026年後半に予定されている次期アップグレード「Pectra」に備え、新しいテストネットの運用を開始しました。このアップデートは処理能力の向上を目指します。",
+      "url": "https://cointelegraph.com/news/ethereum-pectra-upgrade-testnet-live",
+      "date": "2026-02-25T09:12:00.000Z"
+    }
+  ],
+  "en": [
+    {
+      "id": "mock-news-1",
+      "title": "Bitcoin price climbs 3% as gold divergence signals ‘significant upside’",
+      "description": "Despite lagging behind gold and equities over the past six months, Bitcoin's return to the $65,000 mark hints at a potential delayed rally. This recent underperformance could be a precursor to a significant resurgence.",
+      "url": "https://cointelegraph.com/news/bitcoin-price-climbs-3-percent-gold-divergence-significant-upside",
+      "date": "2026-02-25T10:35:48.000Z"
+    },
+    {
+      "id": "mock-news-2",
+      "title": "Ethereum developers launch major testnet for upcoming 'Pectra' upgrade",
+      "description": "The Ethereum core developer team has officially launched a new testnet in preparation for the 'Pectra' upgrade scheduled for late 2026. This upgrade aims to significantly improve transaction throughput.",
+      "url": "https://cointelegraph.com/news/ethereum-pectra-upgrade-testnet-live",
+      "date": "2026-02-25T09:12:00.000Z"
+    }
+  ],
+  "zh": [
+    {
+      "id": "mock-news-1",
+      "title": "比特币价格强势上涨3%，其走势与黄金出现明显背离",
+      "description": "比特币过去六个月未能跟上黄金和股市的涨势，但随着BTC价格回升至65,000美元，市场正期待一场迟来但强劲的上涨。这表明加密货币正在展现日益独立的市场动力。",
+      "url": "https://cointelegraph.com/news/bitcoin-price-climbs-3-percent-gold-divergence-significant-upside",
+      "date": "2026-02-25T10:35:48.000Z"
+    },
+    {
+      "id": "mock-news-2",
+      "title": "以太坊开发者为即将到来的“Pectra”升级启动大型测试网",
+      "description": "以太坊核心开发团队已正式启动一个新的测试网，为计划于 2026 年底进行的“Pectra”升级做准备。此次升级旨在大幅提高交易吞吐量并降低费用。",
+      "url": "https://cointelegraph.com/news/ethereum-pectra-upgrade-testnet-live",
+      "date": "2026-02-25T09:12:00.000Z"
+    }
+  ],
+  "lastUpdated": "2026-02-25T12:00:00.000Z"
+}

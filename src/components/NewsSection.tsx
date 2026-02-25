@@ -2,7 +2,7 @@ import React from 'react';
 import { NewsItem } from '@/services/api';
 import { Newspaper, ExternalLink } from 'lucide-react';
 
-export default function NewsSection({ news }: { news: NewsItem[] }) {
+export default function NewsSection({ news, title }: { news: NewsItem[], title: string }) {
     if (!news || news.length === 0) return null;
 
     return (
@@ -11,7 +11,7 @@ export default function NewsSection({ news }: { news: NewsItem[] }) {
                 <div className="p-2 bg-pink-500/20 rounded-xl">
                     <Newspaper className="text-pink-400" size={24} />
                 </div>
-                <h2 className="text-2xl font-bold text-white">業界ヘッドライン</h2>
+                <h2 className="text-2xl font-bold text-white">{title}</h2>
             </div>
 
             <div className="flex flex-col gap-4">

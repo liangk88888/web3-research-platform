@@ -5,14 +5,20 @@ import ClientProjectsWrapper from '@/components/ClientProjectsWrapper';
 import TrendingMiniGrid from '@/components/TrendingMiniGrid';
 import NewsSection from '@/components/NewsSection';
 import SocialFeed from '@/components/SocialFeed';
-import { getTrendingProjects, getTrendingSearch, getNewsFeed } from '@/services/api';
+import { getTrendingProjects, getTrendingSearch } from '@/services/api';
+import { getNewsFeed } from '@/services/serverApi';
+import { getLocale } from '@/i18n/getLocale';
+import { getDictionary } from '@/i18n/dictionaries';
 
 export default async function Home() {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   // Parallel data fetching for performance
   const [projects, trendingSearch, news] = await Promise.all([
     getTrendingProjects(),
     getTrendingSearch(),
-    getNewsFeed()
+    getNewsFeed(locale as 'ja' | 'en' | 'zh')
   ]);
 
   return (
@@ -25,23 +31,23 @@ export default async function Home() {
         <section className="pb-24 pt-8">
           <div className="container mx-auto px-4 max-w-7xl">
             {/* 1. Trending Search Coins */}
-            <TrendingMiniGrid coins={trendingSearch} />
+            <TrendingMiniGrid coins={trendingSearch} title={dict.sections.trending} />
 
             {/* 2. Top Market Cap / Featured Coins (Original Grid) */}
-            <ClientProjectsWrapper initialProjects={projects} />
+            <ClientProjectsWrapper initialProjects={projects} dict={dict} />
 
             {/* 3. News and Social Split Section */}
             <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <NewsSection news={news} />
-              <SocialFeed />
+              <NewsSection news={news} title={dict.sections.news} />
+              <SocialFeed title={dict.sections.social} />
             </div>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-white/10 py-12 text-center text-gray-500 mt-20">
-        <p className="text-sm">© 2024 Web3Research. All rights reserved.</p>
-        <p className="text-xs mt-2 opacity-50">Data provided by CoinGecko API & RSS Feeds</p>
+        <p className="text-sm">© 2024 Web3Research. {dict.common.footerRights}</p>
+        <p className="text-xs mt-2 opacity-50">{dict.common.footerData}</p>
       </footer>
     </div>
   );
