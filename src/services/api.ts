@@ -1,3 +1,28 @@
+import Parser from 'rss-parser';
+
+export interface TrendingCoin {
+    item: {
+        id: string;
+        coin_id: number;
+        name: string;
+        symbol: string;
+        market_cap_rank: number;
+        thumb: string;
+        small: string;
+        large: string;
+        slug: string;
+        price_btc: number;
+        score: number;
+    };
+}
+
+export interface NewsItem {
+    title: string;
+    link: string;
+    pubDate: string;
+    contentSnippet?: string;
+}
+
 export interface CoinGeckoMarketData {
     id: string;
     symbol: string;
@@ -90,4 +115,40 @@ export async function getProjectDetails(id: string): Promise<CoinGeckoCoinDetail
     }
 
     return res.json();
+}
+
+/**
+ * Fetch currently trending coins from CoinGecko
+ */
+export async function getTrendingSearch(): Promise<TrendingCoin[]> {
+    try {
+        const res = await fetch(`${API_BASE_URL}/search/trending`, {
+            next: { revalidate: 3600 } // Revalidate 1 hour
+        });
+        if (!res.ok) throw new Error('Trending API fell');
+        const data = await res.json();
+        return data.coins.slice(0, 8); // Return top 8
+    } catch (error) {
+        console.error("Failed to fetch trending coins:", error);
+        return [];
+    }
+}
+
+/**
+ * Fetch latest crypto news using RSS Feed (CoinTelegraph EN as example)
+ */
+export async function getNewsFeed(): Promise<NewsItem[]> {
+    try {
+        const parser = new Parser();
+        const feed = await parser.parseURL('https://cointelegraph.com/rss');
+        return feed.items.slice(0, 4).map(item => ({
+            title: item.title || '',
+            link: item.link || '',
+            pubDate: item.pubDate || '',
+            contentSnippet: item.contentSnippet || ''
+        }));
+    } catch (error) {
+        console.error("Failed to fetch news feed:", error);
+        return [];
+    }
 }
