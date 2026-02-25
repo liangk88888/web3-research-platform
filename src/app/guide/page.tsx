@@ -2,8 +2,9 @@ import React from 'react';
 import Header from '@/components/Header';
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
-import { BookOpen } from 'lucide-react';
-import Link from 'next/link';
+import { BookOpen, HelpCircle } from 'lucide-react';
+import EducationalArticle from '@/components/EducationalArticle';
+import QuizCard from '@/components/QuizCard';
 
 export default async function GuidePage() {
     const locale = await getLocale();
@@ -13,18 +14,46 @@ export default async function GuidePage() {
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
             <Header />
 
-            <main className="flex-1 w-full flex items-center justify-center relative pt-32 pb-20">
-                <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 to-transparent pointer-events-none" />
-                <div className="container mx-auto px-4 max-w-2xl text-center">
-                    <div className="inline-block p-4 bg-indigo-500/20 rounded-2xl mb-6">
-                        <BookOpen size={48} className="text-indigo-400" />
+            <main className="flex-1 w-full pt-24 pb-20">
+                {/* Hero Section */}
+                <div className="relative border-b border-white/10 bg-zinc-900/50 py-16 mb-12 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 pointer-events-none" />
+                    <div className="container mx-auto px-4 max-w-4xl relative z-10 text-center">
+                        <div className="inline-block p-4 bg-indigo-500/20 rounded-2xl mb-6">
+                            <BookOpen size={48} className="text-indigo-400" />
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+                            {dict.guide.title}
+                        </h1>
+                        <p className="text-xl text-gray-400">
+                            {dict.guide.subtitle}
+                        </p>
                     </div>
-                    <h1 className="text-4xl font-bold mb-4">{dict.nav.manual}</h1>
-                    <p className="text-xl text-gray-400 mb-8">{dict.common.comingSoon}</p>
+                </div>
 
-                    <Link href="/" className="inline-block bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors">
-                        {dict.common.backToList}
-                    </Link>
+                <div className="container mx-auto px-4 max-w-4xl gap-12 flex flex-col">
+                    {/* Educational Articles */}
+                    <section className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+                        <div className="flex items-center gap-3 mb-8">
+                            <BookOpen className="text-indigo-400" size={28} />
+                            <h2 className="text-2xl font-bold text-white">基礎知識コンテンツ</h2>
+                        </div>
+                        <EducationalArticle courses={dict.guide.courses} />
+                    </section>
+
+                    {/* Quiz Section */}
+                    <section className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+                        <div className="flex items-center gap-3 mb-8">
+                            <HelpCircle className="text-purple-400" size={28} />
+                            <h2 className="text-2xl font-bold text-white">確認テスト</h2>
+                        </div>
+                        <QuizCard
+                            title={dict.guide.quizTitle}
+                            correctText={dict.guide.quizCorrect}
+                            incorrectText={dict.guide.quizIncorrect}
+                            quizzes={dict.guide.quizzes}
+                        />
+                    </section>
                 </div>
             </main>
 
