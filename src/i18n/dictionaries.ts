@@ -172,6 +172,14 @@ contract SimpleStorage {
             completed: '完了',
             stepsLabel: 'タスク手順'
         },
+        tierGuard: {
+            title: 'アクセス制限',
+            description: 'この機能を利用するには、より高いメンバーシップランクが必要です。ウォレットを接続するか、プランをアップグレードしてください。',
+            requirements: '利用条件',
+            paidReq: '有料プレミアム会員（PAID）以上',
+            nftReq: '公式NFTを1枚以上保有していること',
+            upgradeBtn: 'メンバーシップをアップグレード'
+        },
         footer: {
             description: '最新のWeb3インサイト、データ、そしてトレンドをワンストップで。',
             quickLinks: 'クイックリンク'
@@ -351,6 +359,14 @@ contract SimpleStorage {
             completed: 'Completed',
             stepsLabel: 'Task Steps'
         },
+        tierGuard: {
+            title: 'Access Restricted',
+            description: 'This feature requires a higher membership tier. Please upgrade your membership or connect an eligible wallet.',
+            requirements: 'Requirements',
+            paidReq: 'Active Premium Subscription (PAID)',
+            nftReq: 'Hold at least 1x Official NFT',
+            upgradeBtn: 'Upgrade Membership'
+        },
         footer: {
             description: 'Your one-stop platform for the latest Web3 insights, data, and trends.',
             quickLinks: 'Quick Links'
@@ -529,6 +545,14 @@ contract SimpleStorage {
             difficulty: '难度',
             completed: '已完成',
             stepsLabel: '任务步骤'
+        },
+        tierGuard: {
+            title: '访问受限',
+            description: '此功能需要更高的会员等级。请升级您的会员资格或连接符合条件的钱包。',
+            requirements: '访问条件',
+            paidReq: '有效的付费高级订阅 (PAID)',
+            nftReq: '至少持有 1 个官方 NFT',
+            upgradeBtn: '升级会员'
         },
         footer: {
             description: '一站式获取最新 Web3 洞察、数据和趋势的平台。',
