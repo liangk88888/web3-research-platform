@@ -92,7 +92,7 @@ async function analyzeSentiment() {
     const marketContext = await fetchMarketData();
     const newsContext = await fetchRecentNewsContext();
 
-    const delayMs = 4500; // Free tier rate limit padding
+    const delayMs = 15000; // Free tier rate limit padding (increased to 15s)
 
     const sentimentData = {
         lastUpdated: new Date().toISOString(),
