@@ -1,9 +1,13 @@
 import React from 'react';
-
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
-import { CreditCard } from 'lucide-react';
-import Link from 'next/link';
+import { CreditCard, Check, Sparkles } from 'lucide-react';
+import PricingClient from './PricingClient';
+
+export const metadata = {
+    title: 'Pricing | Web3 Research',
+    description: 'Membership plans for Web3 Research platform',
+};
 
 export default async function PricingPage() {
     const locale = await getLocale();
@@ -11,26 +15,35 @@ export default async function PricingPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-            
+            <main className="flex-1 w-full pt-32 pb-24 relative">
+                {/* Background effects */}
+                <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[128px] pointer-events-none" />
+                <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[128px] pointer-events-none" />
 
-            <main className="flex-1 w-full flex items-center justify-center relative pt-32 pb-20">
-                <div className="absolute inset-0 bg-gradient-to-b from-pink-500/10 to-transparent pointer-events-none" />
-                <div className="container mx-auto px-4 max-w-2xl text-center">
-                    <div className="inline-block p-4 bg-pink-500/20 rounded-2xl mb-6">
-                        <CreditCard size={48} className="text-pink-400" />
+                <div className="container mx-auto px-4 max-w-6xl relative z-10">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
+                            <Sparkles className="w-4 h-4" />
+                            Premium Access
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                            {dict.pricing.title}
+                        </h1>
+                        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                            {dict.pricing.subtitle}
+                        </p>
                     </div>
-                    <h1 className="text-4xl font-bold mb-4">{dict.nav.pricing}</h1>
-                    <p className="text-xl text-gray-400 mb-8">{dict.common.comingSoon}</p>
 
-                    <Link href="/" className="inline-block bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors">
-                        {dict.common.backToList}
-                    </Link>
+                    <PricingClient dict={dict.pricing} />
                 </div>
             </main>
 
-            <footer className="border-t border-white/10 py-12 text-center text-gray-500 mt-auto">
-                <p className="text-sm">© 2024 Web3Research. {dict.common.footerRights}</p>
-                <p className="text-xs mt-2 opacity-50">{dict.common.footerData}</p>
+            <footer className="border-t border-white/10 py-12 text-center text-gray-500 mt-auto bg-[#0a0a0a]">
+                <p className="text-sm font-mono">© 2024 Web3Research. {dict.common.footerRights}</p>
+                <div className="flex items-center justify-center gap-2 mt-4 opacity-50">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+                    <span className="text-xs font-mono">System Online</span>
+                </div>
             </footer>
         </div>
     );

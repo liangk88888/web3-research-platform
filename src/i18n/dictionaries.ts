@@ -172,6 +172,33 @@ contract SimpleStorage {
             completed: '完了',
             stepsLabel: 'タスク手順'
         },
+        pricing: {
+            title: 'シンプルな料金体系',
+            subtitle: 'あなたのリサーチスタイルに合わせたプランを選んで、Web3の最前線へアクセスしましょう。',
+            monthly: '/月',
+            lifetime: '生涯パス',
+            currentPlan: '現在のプラン',
+            upgradeToPaid: 'Premiumへアップグレード',
+            mintNft: 'NFTをMintする',
+            free: {
+                name: 'Guest / Free',
+                price: '$0',
+                description: 'Web3リサーチの第一歩を踏み出す方に最適です。',
+                features: ['主要プロジェクトの概要閲覧', '業界ヘッドラインニュースへのアクセス', '初心者向けガイドの完全アクセス']
+            },
+            paid: {
+                name: 'Premium (PAID)',
+                price: '$19',
+                description: '本格的なリサーチとデータ分析を必要とする投資家・開発者向け。',
+                features: ['Freeプランの全ての機能', 'オンチェーン・データダッシュボード', 'Tech Deep Dive (高度な技術解説)', 'AIによる毎日の市場センチメント分析']
+            },
+            nft: {
+                name: 'NFT Holder',
+                price: 'Mint',
+                description: 'プラットフォームのコアサポーター向け。すべての機能への永久アクセス権。',
+                features: ['Paidプランの全ての機能（無期限）', 'エアドロップ＆テストネットAlpha Hub', 'パーソナライズされたウォッチリスト', '専用クローズドコミュニティへの招待(予定)']
+            }
+        },
         tierGuard: {
             title: 'アクセス制限',
             description: 'この機能を利用するには、より高いメンバーシップランクが必要です。ウォレットを接続するか、プランをアップグレードしてください。',
@@ -359,6 +386,33 @@ contract SimpleStorage {
             completed: 'Completed',
             stepsLabel: 'Task Steps'
         },
+        pricing: {
+            title: 'Simple & Transparent Pricing',
+            subtitle: 'Choose the plan that fits your research style and dive into the forefront of Web3.',
+            monthly: '/mo',
+            lifetime: 'Lifetime',
+            currentPlan: 'Current Plan',
+            upgradeToPaid: 'Upgrade to Premium',
+            mintNft: 'Mint Official NFT',
+            free: {
+                name: 'Guest / Free',
+                price: '$0',
+                description: 'Perfect for those taking their first step into Web3 research.',
+                features: ['View basic project overviews', 'Access to industry headline news', 'Full access to beginner guides']
+            },
+            paid: {
+                name: 'Premium (PAID)',
+                price: '$19',
+                description: 'For investors and developers needing serious research and data analysis.',
+                features: ['All Free plan features', 'On-chain Data Dashboard', 'Tech Deep Dive articles', 'Daily AI Market Sentiment Analysis']
+            },
+            nft: {
+                name: 'NFT Holder',
+                price: 'Mint',
+                description: 'For core platform supporters. Lifetime access to all current and future features.',
+                features: ['All Paid plan features (Lifetime)', 'Airdrop & Testnet Alpha Hub', 'Personalized Watchlist / Portfolio', 'Invite to closed community (Coming soon)']
+            }
+        },
         tierGuard: {
             title: 'Access Restricted',
             description: 'This feature requires a higher membership tier. Please upgrade your membership or connect an eligible wallet.',
@@ -545,6 +599,33 @@ contract SimpleStorage {
             difficulty: '难度',
             completed: '已完成',
             stepsLabel: '任务步骤'
+        },
+        pricing: {
+            title: '简单透明的定价',
+            subtitle: '选择适合您研究风格的计划，深入Web3的最前沿。',
+            monthly: '/月',
+            lifetime: '终身通行证',
+            currentPlan: '当前计划',
+            upgradeToPaid: '升级至 Premium',
+            mintNft: '铸造官方 NFT',
+            free: {
+                name: '访客 / 免费',
+                price: '$0',
+                description: '非常适合迈出 Web3 研究第一步的用户。',
+                features: ['查看基础项目概述', '访问行业头条新闻', '完全访问新手指南']
+            },
+            paid: {
+                name: '高级版 (PAID)',
+                price: '$19',
+                description: '面向需要认真研究和数据分析的投资者与开发者。',
+                features: ['所有免费版功能', '链上数据看板', '技术深度解析文章', '每日 AI 市场情绪分析']
+            },
+            nft: {
+                name: 'NFT 持有者',
+                price: 'Mint',
+                description: '面向平台核心支持者。终身访问所有当前及未来功能。',
+                features: ['所有高级版功能 (终身)', '空投与测试网 Alpha 中心', '个性化自选观察', '邀请加入专属封闭社区 (即将推出)']
+            }
         },
         tierGuard: {
             title: '访问受限',
