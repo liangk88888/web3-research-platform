@@ -12,7 +12,7 @@ export default async function Header() {
     const dict = getDictionary(locale);
 
     return (
-        <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
+        <header className="fixed top-0 w-full z-50 bg-zinc-950/90 border-b border-white/10 shadow-lg">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0 flex items-center gap-2 cursor-pointer z-50">

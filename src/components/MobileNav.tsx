@@ -30,7 +30,7 @@ export default function MobileNav({ dict, locale }: MobileNavProps) {
 
             {/* Mobile Dropdown Menu */}
             {isOpen && (
-                <div className="fixed inset-x-0 top-[64px] bottom-0 bg-background/95 backdrop-blur-xl z-40 overflow-y-auto border-t border-white/10 animate-fade-in-up">
+                <div className="fixed inset-x-0 top-[64px] bottom-0 bg-background/95 backdrop-blur-xl z-[100] overflow-y-auto border-t border-white/10">
                     <div className="flex flex-col p-4 gap-4 min-h-full pb-20">
 
                         {/* Discover Group */}
