@@ -19,16 +19,19 @@ export default function MobileNav({ dict, locale }: MobileNavProps) {
     };
 
     return (
-        <div className="md:hidden">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 text-gray-300 hover:text-white bg-white/5 rounded-lg transition-colors"
-                aria-label="Menu"
-            >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+        <>
+            <div className="md:hidden">
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="p-2 text-gray-300 hover:text-white bg-white/5 rounded-lg transition-colors"
+                    aria-label="Menu"
+                >
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
 
-            {/* Full screen overlay menu */}
+            </div>
+
+            {/* Full screen overlay menu - moved out of the md:hidden container to avoid flex clipping */}
             {isOpen && (
                 <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-xl z-40 overflow-y-auto pb-4 fade-in-up">
                     <div className="flex flex-col p-4 gap-4">
@@ -87,6 +90,6 @@ export default function MobileNav({ dict, locale }: MobileNavProps) {
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }
