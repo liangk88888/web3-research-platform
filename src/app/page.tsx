@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
+
 import Hero from '@/components/Hero';
 import ClientProjectsWrapper from '@/components/ClientProjectsWrapper';
 import TrendingMiniGrid from '@/components/TrendingMiniGrid';
@@ -9,6 +9,7 @@ import { getTrendingProjects, getTrendingSearch } from '@/services/api';
 import { getNewsFeed } from '@/services/serverApi';
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
+import SentimentWidget from '@/components/SentimentWidget';
 
 export default async function Home() {
   const locale = await getLocale();
@@ -23,13 +24,16 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-      <Header />
+
 
       <main className="flex-1 w-full relative">
         <Hero />
 
         <section className="pb-24 pt-8">
           <div className="container mx-auto px-4 max-w-7xl">
+            {/* AI Market Sentiment Analyst Widget */}
+            <SentimentWidget locale={locale} dict={dict} />
+
             {/* 1. Trending Search Coins */}
             <TrendingMiniGrid coins={trendingSearch} title={dict.sections.trending} />
 

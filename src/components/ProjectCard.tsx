@@ -1,7 +1,8 @@
 import React from 'react';
 import { CoinGeckoMarketData, CATEGORY_MAP } from '../services/api';
-import { ArrowUpRight, TrendingUp, TrendingDown } from 'lucide-react';
+import { ArrowUpRight, TrendingUp, TrendingDown, Star } from 'lucide-react';
 import Link from 'next/link';
+import { useWatchlist } from '../hooks/useWatchlist';
 
 interface Props {
     project: CoinGeckoMarketData;
@@ -13,6 +14,8 @@ export default function ProjectCard({ project, category, dict }: Props) {
     const isPositive = project.price_change_percentage_24h >= 0;
     const priceColor = isPositive ? 'text-green-400' : 'text-red-400';
     const TrendIcon = isPositive ? TrendingUp : TrendingDown;
+    const { isInWatchlist, toggleWatchlist, isMounted } = useWatchlist();
+    const isStarred = isMounted ? isInWatchlist(project.id) : false;
 
     // Format currency
     const formattedPrice = new Intl.NumberFormat('ja-JP', {
@@ -40,8 +43,17 @@ export default function ProjectCard({ project, category, dict }: Props) {
                         <span className="text-xs text-gray-400 uppercase tracking-widest">{project.symbol}</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-end">
-                    <ArrowUpRight className="text-gray-500 group-hover:text-indigo-400 transition-colors mb-2" size={20} />
+                <div className="flex flex-col items-end gap-2">
+                    <button
+                        onClick={(e) => toggleWatchlist(project.id, e)}
+                        className={`p-1.5 rounded-full backdrop-blur-md transition-all ${isStarred
+                                ? 'bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30'
+                                : 'bg-white/5 text-gray-500 hover:text-white hover:bg-white/10'
+                            }`}
+                        title={isStarred ? "Remove from Watchlist" : "Add to Watchlist"}
+                    >
+                        <Star size={18} className={isStarred ? "fill-yellow-400" : ""} />
+                    </button>
                     <span className="bg-white/10 text-white text-xs font-bold px-2 py-0.5 rounded-full border border-white/5">
                         {dict?.rank || 'Rank'} #{project.market_cap_rank}
                     </span>

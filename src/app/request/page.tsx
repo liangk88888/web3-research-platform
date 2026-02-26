@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
+
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
 import { MessageSquarePlus } from 'lucide-react';
@@ -12,7 +12,7 @@ export default async function RequestPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-            <Header />
+            
 
             <main className="flex-1 w-full flex items-center justify-center relative pt-32 pb-20">
                 <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent pointer-events-none" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
+
 import { searchCoins } from '@/services/api';
 import TrendingMiniGrid from '@/components/TrendingMiniGrid';
 import { getLocale } from '@/i18n/getLocale';
@@ -21,7 +21,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-            <Header />
+            
 
             <main className="flex-1 w-full relative pt-32 pb-20">
                 <div className="container mx-auto px-4 max-w-7xl">

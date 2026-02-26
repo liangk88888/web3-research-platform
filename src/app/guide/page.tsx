@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
+
 import { getLocale } from '@/i18n/getLocale';
 import { getDictionary } from '@/i18n/dictionaries';
 import { BookOpen, HelpCircle } from 'lucide-react';
@@ -12,7 +12,7 @@ export default async function GuidePage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-            <Header />
+            
 
             <main className="flex-1 w-full pt-24 pb-20">
                 {/* Hero Section */}

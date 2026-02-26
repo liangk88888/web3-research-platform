@@ -10,12 +10,20 @@ export const dictionaries = {
         },
         nav: {
             home: 'ホーム',
-            projects: 'プロジェクト一覧',
-            manual: '初心者マニュアル',
+            projects: 'プロジェクト',
+            dashboard: 'オンチェーンデータ',
+            portfolio: 'ウォッチリスト',
+            airdrop: 'エアドロップ',
+            manual: 'マニュアル',
             techDive: 'Tech Deep Dive',
-            request: 'リサーチリクエスト',
+            request: '調査リクエスト',
             pricing: '料金表',
             connect: 'ウォレット接続'
+        },
+        navGroups: {
+            discover: '発見 (Discover)',
+            learn: '学ぶ (Learn)',
+            services: 'サービス'
         },
         sections: {
             trending: '24h 検索急上昇 (Trending)',
@@ -143,6 +151,33 @@ contract SimpleStorage {
                     content: 'Layer 1（Ethereumなど）のスケーラビリティ問題（ガス代の高騰、トランザクションの遅延）を解決するための技術です。\n**Optimistic Rollups (Arbitrum, Optimism):** トランザクションが不正でないという「楽観的」な前提で処理し、後から異議申し立て（Fraud Proof）の期間を設けます。\n**ZK-Rollups (StarkNet, zkSync):** ゼロ知識証明を用いて、オフチェーンで計算した結果の正当性を暗号学的に証明（Validity Proof）し、L1に提出します。より高いスケーラビリティと即時のファイナリティを持ちます。'
                 }
             ]
+        },
+        dashboard: {
+            title: 'On-chain Data Dashboard',
+            subtitle: 'DefiLlamaのライブAPIを活用した、各チェーンおよびプロトコルのリアルタイムTVL（Total Value Locked）分析。',
+            chainsTitle: 'トップチェーン別 TVL シェア',
+            protocolsTitle: 'トッププロトコル別 TVL ランキング'
+        },
+        portfolio: {
+            title: 'マイ・ウォッチリスト',
+            subtitle: 'あなたが「★」をつけた注目のプロジェクト一覧です。',
+            emptyState: '現在、ウォッチリストに登録されたプロジェクトはありません。',
+            exploreButton: 'プロジェクトを探す'
+        },
+        airdrop: {
+            title: 'エアドロップ＆テストネット ハブ',
+            subtitle: '給付金（エアドロップ）が期待される注目プロジェクトのタスク一覧。チェックリストを活用して取りこぼしを防ごう。',
+            reward: '期待報酬',
+            difficulty: '難易度',
+            completed: '完了',
+            stepsLabel: 'タスク手順'
+        },
+        footer: {
+            description: '最新のWeb3インサイト、データ、そしてトレンドをワンストップで。',
+            quickLinks: 'クイックリンク'
+        },
+        sentiment: {
+            title: 'AI 本日の市場レポート'
         }
     },
     en: {
@@ -155,11 +190,19 @@ contract SimpleStorage {
         nav: {
             home: 'Home',
             projects: 'Projects',
+            dashboard: 'On-chain Data',
+            portfolio: 'Watchlist',
+            airdrop: 'Airdrop Hub',
             manual: 'Beginner Guide',
             techDive: 'Tech Deep Dive',
-            request: 'Research Request',
+            request: 'Request',
             pricing: 'Pricing',
             connect: 'Connect Wallet'
+        },
+        navGroups: {
+            discover: 'Discover',
+            learn: 'Learn',
+            services: 'Services'
         },
         sections: {
             trending: '24h Trending Search',
@@ -287,6 +330,33 @@ contract SimpleStorage {
                     content: 'Technology designed to solve the scalability trilemma of Layer 1 blockchains (like high gas fees and slow transactions).\n**Optimistic Rollups (Arbitrum, Optimism):** Assume transactions are valid by default and only run computation via a fraud proof in the event of a challenge.\n**ZK-Rollups (StarkNet, zkSync):** Run computation off-chain and submit a validity proof (using Zero-Knowledge Proofs) to the chain. They offer higher scalability and immediate finality.'
                 }
             ]
+        },
+        dashboard: {
+            title: 'On-chain Data Dashboard',
+            subtitle: 'Real-time TVL (Total Value Locked) analysis for chains and protocols powered by DefiLlama live API.',
+            chainsTitle: 'Top Chains TVL Share',
+            protocolsTitle: 'Top Protocols TVL Ranking'
+        },
+        portfolio: {
+            title: 'My Watchlist',
+            subtitle: 'Projects you have starred and are currently tracking.',
+            emptyState: 'Your watchlist is currently empty.',
+            exploreButton: 'Explore Projects'
+        },
+        airdrop: {
+            title: 'Airdrop & Testnet Hub',
+            subtitle: 'Curated tasks for high-potential airdrops. Use the checklist to track your progress and maximize rewards.',
+            reward: 'Potential Reward',
+            difficulty: 'Difficulty',
+            completed: 'Completed',
+            stepsLabel: 'Task Steps'
+        },
+        footer: {
+            description: 'Your one-stop platform for the latest Web3 insights, data, and trends.',
+            quickLinks: 'Quick Links'
+        },
+        sentiment: {
+            title: 'AI Daily Market Report'
         }
     },
     zh: {
@@ -298,12 +368,20 @@ contract SimpleStorage {
         },
         nav: {
             home: '首页',
-            projects: '项目列表',
+            projects: '项目',
+            dashboard: '链上看板',
+            portfolio: '自选观察',
+            airdrop: '空投任务',
             manual: '新手指南',
             techDive: '技术深度解析',
             request: '研究请求',
             pricing: '价格',
             connect: '连接钱包'
+        },
+        navGroups: {
+            discover: '发现 (Discover)',
+            learn: '学习 (Learn)',
+            services: '服务中心'
         },
         sections: {
             trending: '24h 热门搜索 (Trending)',
@@ -431,6 +509,33 @@ contract SimpleStorage {
                     content: '旨在解决Layer 1区块链可扩展性困境（如高昂的 Gas 费和缓慢的交易）的技术。\n**Optimistic Rollups (Arbitrum, Optimism):** 默认假设交易有效，仅在遇到挑战时才通过欺诈证明运行计算。\n**ZK-Rollups (StarkNet, zkSync):** 在链下运行计算，并向链上提交有效性证明（使用零知识证明）。它们提供更高的可扩展性和即时的最终性。'
                 }
             ]
+        },
+        dashboard: {
+            title: '链上数据看板',
+            subtitle: '利用 DefiLlama 实时 API 分析各公链及协议的 TVL (总锁仓量)。',
+            chainsTitle: '顶级公链 TVL 占比',
+            protocolsTitle: '顶级协议 TVL 排行'
+        },
+        portfolio: {
+            title: '我的自选观察',
+            subtitle: '您加注“★”星标并正在追踪的项目列表。',
+            emptyState: '目前您的自选列表中没有项目。',
+            exploreButton: '探索项目'
+        },
+        airdrop: {
+            title: '空投与测试网中心',
+            subtitle: '精心策划的高潜力空投任务。使用清单跟踪您的进度并最大化奖励。',
+            reward: '预估奖励',
+            difficulty: '难度',
+            completed: '已完成',
+            stepsLabel: '任务步骤'
+        },
+        footer: {
+            description: '一站式获取最新 Web3 洞察、数据和趋势的平台。',
+            quickLinks: '快速链接'
+        },
+        sentiment: {
+            title: 'AI 每日市场报告'
         }
     }
 };

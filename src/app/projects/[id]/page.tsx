@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
+
 import { getProjectDetails, FEATURED_COINS } from '@/services/api';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, TrendingUp, TrendingDown, Target, Globe, MessageCircle, Send, Code, Calendar } from 'lucide-react';
@@ -50,7 +50,7 @@ export default async function ProjectDetail({ params }: Props) {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-            <Header />
+            
 
             <main className="flex-1 w-full relative pt-24 pb-20">
                 <div className="container mx-auto px-4 max-w-4xl">
