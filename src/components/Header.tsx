@@ -75,7 +75,7 @@ export default async function Header() {
                     <div className="hidden sm:block">
                         <LanguageSwitcher initialLocale={locale} />
                     </div>
-                    <div className="hidden sm:block">
+                    <div className="flex">
                         <ConnectWalletButton dict={dict.wallet} buttonText={dict.nav.connect} />
                     </div>
                     {/* Mobile Hamburger component */}
