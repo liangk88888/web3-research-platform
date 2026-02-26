@@ -23,9 +23,7 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-
-
+    <>
       <main className="flex-1 w-full relative">
         <Hero />
 
@@ -48,11 +46,6 @@ export default async function Home() {
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-white/10 py-12 text-center text-gray-500 mt-20">
-        <p className="text-sm">© 2024 Web3Research. {dict.common.footerRights}</p>
-        <p className="text-xs mt-2 opacity-50">{dict.common.footerData}</p>
-      </footer>
-    </div>
+    </>
   );
 }

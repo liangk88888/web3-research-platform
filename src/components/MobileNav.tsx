@@ -30,49 +30,49 @@ export default function MobileNav({ dict, locale }: MobileNavProps) {
 
             {/* Full screen overlay menu */}
             {isOpen && (
-                <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-xl z-40 overflow-y-auto pb-20 fade-in-up">
-                    <div className="flex flex-col p-4 gap-6">
+                <div className="fixed inset-0 top-16 bg-background/95 backdrop-blur-xl z-40 overflow-y-auto pb-4 fade-in-up">
+                    <div className="flex flex-col p-4 gap-4">
 
                         {/* Discover Group */}
-                        <div className="space-y-3">
-                            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest">{dict.navGroups.discover}</h3>
-                            <div className="flex flex-col gap-2">
-                                <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-white/5 text-gray-200 active:bg-white/10">
+                        <div className="space-y-2">
+                            <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{dict.navGroups.discover}</h3>
+                            <div className="flex flex-col gap-1.5">
+                                <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 text-gray-200 active:bg-white/10 text-sm">
                                     <span>{dict.nav.projects}</span> <ChevronRight size={16} className="text-gray-500" />
                                 </Link>
-                                <Link href="/dashboard" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-white/5 text-gray-200 active:bg-white/10">
+                                <Link href="/dashboard" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 text-gray-200 active:bg-white/10 text-sm">
                                     <span>{dict.nav.dashboard}</span> <ChevronRight size={16} className="text-gray-500" />
                                 </Link>
-                                <Link href="/airdrop" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-green-500/10 text-green-400 active:bg-green-500/20 border border-green-500/20">
-                                    <div className="flex items-center gap-2"><Gift size={18} /> {dict.nav.airdrop}</div> <ChevronRight size={16} className="text-green-500/50" />
+                                <Link href="/airdrop" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-green-500/10 text-green-400 active:bg-green-500/20 border border-green-500/20 text-sm">
+                                    <div className="flex items-center gap-2"><Gift size={16} /> {dict.nav.airdrop}</div> <ChevronRight size={16} className="text-green-500/50" />
                                 </Link>
                             </div>
                         </div>
 
                         {/* Learn Group */}
-                        <div className="space-y-3">
-                            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest">{dict.navGroups.learn}</h3>
-                            <div className="flex flex-col gap-2">
-                                <Link href="/guide" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-white/5 text-gray-200 active:bg-white/10">
+                        <div className="space-y-2">
+                            <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{dict.navGroups.learn}</h3>
+                            <div className="flex flex-col gap-1.5">
+                                <Link href="/guide" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 text-gray-200 active:bg-white/10 text-sm">
                                     <span>{dict.nav.manual}</span> <ChevronRight size={16} className="text-gray-500" />
                                 </Link>
-                                <Link href="/advanced" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-indigo-500/10 to-transparent border border-indigo-500/20 text-cyan-400 active:bg-indigo-500/20">
+                                <Link href="/advanced" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-gradient-to-r from-indigo-500/10 to-transparent border border-indigo-500/20 text-cyan-400 active:bg-indigo-500/20 text-sm">
                                     <span>{dict.nav.techDive}</span> <ChevronRight size={16} className="text-indigo-400/50" />
                                 </Link>
                             </div>
                         </div>
 
                         {/* Services Group */}
-                        <div className="space-y-3">
-                            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest">{dict.navGroups.services}</h3>
-                            <div className="flex flex-col gap-2">
-                                <Link href="/portfolio" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-yellow-500/10 text-yellow-400 active:bg-yellow-500/20 border border-yellow-500/20">
-                                    <div className="flex items-center gap-2"><Star size={18} /> {dict.nav.portfolio}</div> <ChevronRight size={16} className="text-yellow-500/50" />
+                        <div className="space-y-2">
+                            <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{dict.navGroups.services}</h3>
+                            <div className="flex flex-col gap-1.5">
+                                <Link href="/portfolio" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-yellow-500/10 text-yellow-400 active:bg-yellow-500/20 border border-yellow-500/20 text-sm">
+                                    <div className="flex items-center gap-2"><Star size={16} /> {dict.nav.portfolio}</div> <ChevronRight size={16} className="text-yellow-500/50" />
                                 </Link>
-                                <Link href="/request" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-white/5 text-gray-200 active:bg-white/10">
+                                <Link href="/request" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 text-gray-200 active:bg-white/10 text-sm">
                                     <span>{dict.nav.request}</span> <ChevronRight size={16} className="text-gray-500" />
                                 </Link>
-                                <Link href="/pricing" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-3 rounded-xl bg-white/5 text-gray-200 active:bg-white/10">
+                                <Link href="/pricing" onClick={() => setIsOpen(false)} className="flex items-center justify-between p-2.5 rounded-xl bg-white/5 text-gray-200 active:bg-white/10 text-sm">
                                     <span>{dict.nav.pricing}</span> <ChevronRight size={16} className="text-gray-500" />
                                 </Link>
                             </div>
